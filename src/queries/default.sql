@@ -66,7 +66,7 @@ CREATE TABLE profile_episode (
 -- Now add foreign key and primary key constraints
 ALTER TABLE episode ADD CONSTRAINT fk_episode_series FOREIGN KEY (series) REFERENCES series;
 
-ALTER TABLE profile ADD PRIMARY KEY (email, name);
+ALTER TABLE profile ADD PRIMARY KEY (account, name);
 ALTER TABLE profile ADD CONSTRAINT fk_profile_account FOREIGN KEY (account) REFERENCES account ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE profile_movie ADD PRIMARY KEY (profile_email, profile_name, movie);
@@ -88,4 +88,3 @@ ALTER TABLE profile_movie ADD CONSTRAINT check_pm CHECK (watch_time >= 0 AND wat
 ALTER TABLE profile_episode ADD CONSTRAINT check_pe CHECK (watch_time >= 0 AND watch_time <= 100);
 
 -- Last but not least: Inserting data...
-
