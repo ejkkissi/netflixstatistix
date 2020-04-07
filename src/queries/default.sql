@@ -1,0 +1,1 @@
+-- This query creates the necessary tables and inserts the default data
