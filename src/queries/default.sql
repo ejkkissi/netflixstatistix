@@ -37,7 +37,7 @@ CREATE TABLE episode (
 );
 
 CREATE TABLE account (
-    email VARCHAR(20) PRIMARY KEY NOT NULL,
+    email VARCHAR(40) PRIMARY KEY NOT NULL,
     name VARCHAR(20) NOT NULL,
     address VARCHAR(30) NOT NULL,
     city VARCHAR(20) NOT NULL
@@ -45,19 +45,19 @@ CREATE TABLE account (
 
 CREATE TABLE profile (
     name VARCHAR(20) NOT NULL,
-    account VARCHAR(20) NOT NULL,
+    account VARCHAR(40) NOT NULL,
     age SMALLINT NOT NULL
 );
 
 CREATE TABLE profile_movie (
-    profile_email VARCHAR(20) NOT NULL,
+    profile_email VARCHAR(40) NOT NULL,
     profile_name VARCHAR(20) NOT NULL,
     movie INT NOT NULL,
     watch_time SMALLINT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE profile_episode (
-    profile_email VARCHAR(20) NOT NULL,
+    profile_email VARCHAR(40) NOT NULL,
     profile_name VARCHAR(20) NOT NULL,
     episode INT NOT NULL,
     watch_time SMALLINT NOT NULL DEFAULT 0
