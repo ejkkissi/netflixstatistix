@@ -120,12 +120,44 @@ public class ProfileDao implements IProfileDao {
 
     @Override
     public int getProfileWatchTimeForMovie(Profile profile, Movie movie) {
-        return 0;
+        int x = 0;
+        String sql = "SELECT watch_time FROM profile_movie\n"
+                    +"JOIN movie ON movie.id = profile_movie.movie\n"
+                    +"JOIN profile ON profile.account = profile_movie.profile_email"
+                    +"AND profile.name = profile_movie.profile_name\n"
+                    +"WHERE profile.name = " + profile.getName() + "AND profile.account = " + profile.getAccountEmail()
+                    +"AND movie.id = " movie.getId();
+        DBManager.getInstance().query(sql, rs -> {
+           try {
+               while (rs.next()) {
+                   x = rs.getInt("watch_time");
+               }
+           } catch (SQLException e) {
+               e.printStackTrace();
+           }
+        });
+        return x;
     }
 
     @Override
     public int getProfileWatchTimeForEpisode(Profile profile, Episode episode) {
-        return 0;
+        int x = 0;
+        String sql = "SELECT watch_time FROM profile_episode\n"
+                +"JOIN episode ON episode.id = profile_episode.episode\n"
+                +"JOIN profile ON profile.account = profile_episode.profile_email"
+                +"AND profile.name = profile_episode.profile_name\n"
+                +"WHERE profile.name = " + profile.getName() + "AND profile.account = " + profile.getAccountEmail()
+                +"AND episode.id = " episode.getId();
+        DBManager.getInstance().query(sql, rs -> {
+            try {
+                while (rs.next()) {
+                    x = rs.getInt("watch_time");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        return x;
     }
 
     @Override
