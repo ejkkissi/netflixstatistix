@@ -13,6 +13,10 @@ public class Account {
         this.city = city;
     }
 
+    public Account () {
+
+    }
+
     public String getEmail() {
         return email;
     }
