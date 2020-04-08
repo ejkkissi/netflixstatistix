@@ -31,7 +31,7 @@ public class AccountDao implements IAccountDao {
     @Override
     public Account getAccountByEmail(String email) {
         Account account = new Account();
-        DBManager.getInstance().query("SELECT * FROM account WHERE email = " + email, (rs) -> {
+        DBManager.getInstance().query("SELECT * FROM account WHERE email = '" + email + "'", (rs) -> {
             try {
                 while (rs.next()) {
                     account.setEmail(rs.getString("email"));
@@ -49,21 +49,21 @@ public class AccountDao implements IAccountDao {
     @Override
     public void createAccount(Account account) {
         DBManager.getInstance().query("INSERT INTO account (email, name, address, city) VALUES"
-                                        + "(" + account.getEmail() + " " + account.getName()+ " " + account.getAddress() + " " +  account.getCity() + ")", null);
+                                        + "('" + account.getEmail() + "', '" + account.getName()+ "', '" + account.getAddress() + "', '" +  account.getCity() + "')", null);
     }
 
     @Override
     public void updateAccount(Account account) {
         DBManager.getInstance().query("UPDATE account\n"
-                                        + "SET email = " + account.getEmail()
-                                        +",name = " + account.getName()
-                                        +",address = " + account.getAddress()
-                                        +",city = " + account.getCity() + "\n"
-                                        + "WHERE email = " + account.getEmail(), null);
+                                        + "SET email = '" + account.getEmail() + "'"
+                                        +",name = '" + account.getName() + "'"
+                                        +",address = '" + account.getAddress() + "'"
+                                        +",city = '" + account.getCity() + "'\n"
+                                        + "WHERE email = '" + account.getEmail() + "'", null);
     }
 
     @Override
     public void deleteAccount(Account account) {
-        DBManager.getInstance().query("DELETE FROM account WHERE email = " + account.getEmail(), null);
+        DBManager.getInstance().query("DELETE FROM account WHERE email = '" + account.getEmail() + "'", null);
     }
 }
