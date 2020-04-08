@@ -53,9 +53,8 @@ public class ProfileDao implements IProfileDao {
     public List<Profile> getProfilesOf(Account account) {
         List<Profile> list = new ArrayList<>();
         String sql = "SELECT * FROM profile\n"
-                    +"JOIN account ON account.email = profile.account\n"
-                    +"WHERE account.email = " + account.getEmail();
-        DBManager.getInstance().query(sql, rs-> {
+                    +"WHERE account = " + account.getEmail();
+        DBManager.getInstance().query(sql, rs -> {
             try {
                 while (rs.next()) {
                     Profile p = new Profile(
@@ -122,11 +121,8 @@ public class ProfileDao implements IProfileDao {
     public int getProfileWatchTimeForMovie(Profile profile, Movie movie) {
         int x = 0;
         String sql = "SELECT watch_time FROM profile_movie\n"
-                    +"JOIN movie ON movie.id = profile_movie.movie\n"
-                    +"JOIN profile ON profile.account = profile_movie.profile_email"
-                    +"AND profile.name = profile_movie.profile_name\n"
-                    +"WHERE profile.name = " + profile.getName() + "AND profile.account = " + profile.getAccountEmail()
-                    +"AND movie.id = " movie.getId();
+                    +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
+                    +"AND movie = " movie.getId();
         DBManager.getInstance().query(sql, rs -> {
            try {
                while (rs.next()) {
@@ -143,11 +139,8 @@ public class ProfileDao implements IProfileDao {
     public int getProfileWatchTimeForEpisode(Profile profile, Episode episode) {
         int x = 0;
         String sql = "SELECT watch_time FROM profile_episode\n"
-                +"JOIN episode ON episode.id = profile_episode.episode\n"
-                +"JOIN profile ON profile.account = profile_episode.profile_email"
-                +"AND profile.name = profile_episode.profile_name\n"
-                +"WHERE profile.name = " + profile.getName() + "AND profile.account = " + profile.getAccountEmail()
-                +"AND episode.id = " episode.getId();
+                    +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
+                    +"AND episode = " episode.getId();
         DBManager.getInstance().query(sql, rs -> {
             try {
                 while (rs.next()) {
@@ -161,12 +154,54 @@ public class ProfileDao implements IProfileDao {
     }
 
     @Override
-    public void setProfileWatchTimeForMovie(Profile profile, Movie movie) {
-
+    public void setProfileWatchTimeForMovie(Profile profile, Movie movie, int percentage) {
+        //first check if there's data already
+        String sql = "SELECT * FROM profile_movie\n"
+                    +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
+                    +"AND movie = " + movie.getId();
+        DBManager.getInstance(sql, rs -> {
+           try {
+               if (!rs.next()) { // insert new if none
+                   sql = "INSERT INTO profile_movie (profile_name, profile_email, movie, watch_time) VALUES\n"
+                        +"(" + profile.getName() + ", " + profile.getName() + ", " + movie.getId() + ", " + percentage")"
+                   DBManager.getInstance().query(sql, null);
+               } else { //update if there is
+                   sql = "UPDATE profile_movie SET\n"
+                        +"profile_name = " + profile.getName() + ", "
+                        +"profile_email = " + profile.getAccountEmail() + ", "
+                        +"movie = " + movie.getId() + ", "
+                        +"watch_time = " + percentage + "\n"
+                           +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
+                           +"AND movie = " + movie.getId();
+                   DBManager.getInstance.query(sql, null);
+               }
+           }
+        });
     }
 
     @Override
-    public void setProfileWatchTimeForEpisode(Profile profile, Episode episode) {
-
+    public void setProfileWatchTimeForEpisode(Profile profile, Episode episode, int percentage) {
+        //first check if there's data already
+        String sql = "SELECT * FROM profile_episode\n"
+                +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
+                +"AND episode = " + episode.getId();
+        DBManager.getInstance(sql, rs -> {
+            try {
+                if (!rs.next()) { // insert new if none
+                    sql = "INSERT INTO profile_episode (profile_name, profile_email, episode, watch_time) VALUES\n"
+                            +"(" + profile.getName() + ", " + profile.getName() + ", " + episode.getId() + ", " + percentage")"
+                    DBManager.getInstance().query(sql, null);
+                } else { //update if there is
+                    sql = "UPDATE profile_movie SET\n"
+                            +"profile_name = " + profile.getName() + ", "
+                            +"profile_email = " + profile.getAccountEmail() + ", "
+                            +"episode = " + episode.getId() + ", "
+                            +"watch_time = " + percentage + "\n"
+                            +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
+                            +"AND episode = " + episode.getId();
+                    DBManager.getInstance.query(sql, null);
+                }
+            }
+        });
     }
 }
