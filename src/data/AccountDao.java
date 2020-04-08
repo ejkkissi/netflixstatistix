@@ -49,7 +49,7 @@ public class AccountDao implements IAccountDao {
     @Override
     public void createAccount(Account account) {
         DBManager.getInstance().query("INSERT INTO account (email, name, address, city) VALUES"
-                                        + "(" + account.getEmail() + account.getName() + account.getAddress() + account.getCity() + ")", null);
+                                        + "(" + account.getEmail() + " " + account.getName()+ " " + account.getAddress() + " " +  account.getCity() + ")", null);
     }
 
     @Override
