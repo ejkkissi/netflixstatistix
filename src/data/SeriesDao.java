@@ -58,7 +58,7 @@ public class SeriesDao implements ISeriesDao {
         String sql = "SELECT * FROM series\n"
                     +"JOIN episode ON episode.series = series.id\n"
                     +"JOIN profile_episode ON profile_episode.episode = episode.id"
-                    +"WHERE profile.account = " + profile.getAccountEmail() + " AND profile.name = " + profile.getName();
+                    +"WHERE profile.account = '" + profile.getAccountEmail() + "' AND profile.name = '" + profile.getName() + "'";
 
         DBManager.getInstance().query(sql, rs -> {
             try {

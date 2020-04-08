@@ -60,8 +60,8 @@ public class MovieDao implements IMovieDao {
         List<Movie> list = new ArrayList<>();
         String sql = "SELECT * FROM movie\n"
                     +"JOIN profile_movie ON profile_movie.movie = movie.id\n"
-                    +"WHERE profile_movie.profile_email = " + profile.getAccountEmail()
-                    +"AND profile_movie.profile_name = " + profile.getName();
+                    +"WHERE profile_movie.profile_email = '" + profile.getAccountEmail()
+                    +"' AND profile_movie.profile_name = '" + profile.getName() + "'";
         DBManager.getInstance().query(sql, rs -> {
             try {
                 while (rs.next()) {
