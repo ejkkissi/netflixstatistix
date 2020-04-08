@@ -9,6 +9,7 @@ import model.Profile;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ProfileDao implements IProfileDao {
     @Override
@@ -119,38 +120,38 @@ public class ProfileDao implements IProfileDao {
 
     @Override
     public int getProfileWatchTimeForMovie(Profile profile, Movie movie) {
-        int x = 0;
+        AtomicInteger x = new AtomicInteger();
         String sql = "SELECT watch_time FROM profile_movie\n"
                     +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
-                    +"AND movie = " movie.getId();
+                    +"AND movie = " + movie.getId();
         DBManager.getInstance().query(sql, rs -> {
            try {
                while (rs.next()) {
-                   x = rs.getInt("watch_time");
+                   x.set(rs.getInt("watch_time"));
                }
            } catch (SQLException e) {
                e.printStackTrace();
            }
         });
-        return x;
+        return x.get();
     }
 
     @Override
     public int getProfileWatchTimeForEpisode(Profile profile, Episode episode) {
-        int x = 0;
+        AtomicInteger x = new AtomicInteger();
         String sql = "SELECT watch_time FROM profile_episode\n"
                     +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
-                    +"AND episode = " episode.getId();
+                    +"AND episode = " + episode.getId();
         DBManager.getInstance().query(sql, rs -> {
             try {
                 while (rs.next()) {
-                    x = rs.getInt("watch_time");
+                    x.set(rs.getInt("watch_time"));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         });
-        return x;
+        return x.get();
     }
 
     @Override
@@ -159,22 +160,24 @@ public class ProfileDao implements IProfileDao {
         String sql = "SELECT * FROM profile_movie\n"
                     +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
                     +"AND movie = " + movie.getId();
-        DBManager.getInstance(sql, rs -> {
+        DBManager.getInstance().query(sql, rs -> {
            try {
                if (!rs.next()) { // insert new if none
-                   sql = "INSERT INTO profile_movie (profile_name, profile_email, movie, watch_time) VALUES\n"
-                        +"(" + profile.getName() + ", " + profile.getName() + ", " + movie.getId() + ", " + percentage")"
-                   DBManager.getInstance().query(sql, null);
+                   String sql2 = "INSERT INTO profile_movie (profile_name, profile_email, movie, watch_time) VALUES\n"
+                        +"(" + profile.getName() + ", " + profile.getName() + ", " + movie.getId() + ", " + percentage + ")";
+                   DBManager.getInstance().query(sql2, null);
                } else { //update if there is
-                   sql = "UPDATE profile_movie SET\n"
+                   String sql3 = "UPDATE profile_movie SET\n"
                         +"profile_name = " + profile.getName() + ", "
                         +"profile_email = " + profile.getAccountEmail() + ", "
                         +"movie = " + movie.getId() + ", "
                         +"watch_time = " + percentage + "\n"
                            +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
                            +"AND movie = " + movie.getId();
-                   DBManager.getInstance.query(sql, null);
+                   DBManager.getInstance().query(sql3, null);
                }
+           } catch (SQLException e) {
+               e.printStackTrace();
            }
         });
     }
@@ -185,22 +188,24 @@ public class ProfileDao implements IProfileDao {
         String sql = "SELECT * FROM profile_episode\n"
                 +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
                 +"AND episode = " + episode.getId();
-        DBManager.getInstance(sql, rs -> {
+        DBManager.getInstance().query(sql, rs -> {
             try {
                 if (!rs.next()) { // insert new if none
-                    sql = "INSERT INTO profile_episode (profile_name, profile_email, episode, watch_time) VALUES\n"
-                            +"(" + profile.getName() + ", " + profile.getName() + ", " + episode.getId() + ", " + percentage")"
-                    DBManager.getInstance().query(sql, null);
+                    String sql2 = "INSERT INTO profile_episode (profile_name, profile_email, episode, watch_time) VALUES\n"
+                            +"(" + profile.getName() + ", " + profile.getName() + ", " + episode.getId() + ", " + percentage + ")";
+                    DBManager.getInstance().query(sql2, null);
                 } else { //update if there is
-                    sql = "UPDATE profile_movie SET\n"
+                    String sql3 = "UPDATE profile_movie SET\n"
                             +"profile_name = " + profile.getName() + ", "
                             +"profile_email = " + profile.getAccountEmail() + ", "
                             +"episode = " + episode.getId() + ", "
                             +"watch_time = " + percentage + "\n"
                             +"WHERE profile_name = " + profile.getName() + "AND profile_account = " + profile.getAccountEmail()
                             +"AND episode = " + episode.getId();
-                    DBManager.getInstance.query(sql, null);
+                    DBManager.getInstance().query(sql3, null);
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         });
     }

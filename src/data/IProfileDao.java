@@ -17,6 +17,6 @@ public interface IProfileDao {
     List<Profile> getProfilesWhoWatched(Episode episode);
     int getProfileWatchTimeForMovie(Profile profile, Movie movie);
     int getProfileWatchTimeForEpisode(Profile profile, Episode episode);
-    void setProfileWatchTimeForMovie(Profile profile, Movie movie);
-    void setProfileWatchTimeForEpisode(Profile profile, Episode episode);
+    void setProfileWatchTimeForMovie(Profile profile, Movie movie, int percentage);
+    void setProfileWatchTimeForEpisode(Profile profile, Episode episode, int percentage);
 }
