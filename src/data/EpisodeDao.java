@@ -59,7 +59,7 @@ public class EpisodeDao implements IEpisodeDao {
     @Override
     public List<Episode> getEpisodesOfSeriesWatchedByProfile(Series series, Profile profile) {
         List<Episode> list = new ArrayList<>();
-        //TODO can;t do until seriesdao
-        return null;
+        //TODO: unsure if necessary
+        return list;
     }
 }
