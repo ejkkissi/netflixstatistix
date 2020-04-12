@@ -76,5 +76,20 @@ public class DataUtil {
                 }
             });
         });
+
+        daos.getSeriesDao().getAllSeries().forEach(series -> {
+            daos.getEpisodeDao().getEpisodesOf(series).forEach(ep -> {
+                daos.getProfileDao().getAllProfiles().forEach(profile -> {
+                    int watched = rand.nextInt(2); // 50% chance they watched the episode
+                    if (watched == 1) {
+                        int percentage = rand.nextInt(100) + 1;
+                        daos.getProfileDao().setProfileWatchTimeForEpisode(profile, ep, percentage);
+                        System.out.println("Set percentage " + profile.getName() + " : " + profile.getAccountEmail() + " for " + ep.getTitle() + " to " + percentage);
+                    }
+                });
+            });
+        });
+
+
     }
 }

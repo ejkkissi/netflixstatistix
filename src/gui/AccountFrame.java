@@ -16,6 +16,8 @@ public class AccountFrame extends JFrame {
     private JSeparator sep1;
     private JButton addProfile;
     private JPanel profiles;
+    private JScrollPane watchedWrapper;
+    private JPanel watched;
     private Account account;
 
     public AccountFrame(String email) {
@@ -43,6 +45,9 @@ public class AccountFrame extends JFrame {
 
         content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+
+        watched = new JPanel();
+        watchedWrapper = new JScrollPane(watched);
 
         content.add(this.email);
         content.add(name);

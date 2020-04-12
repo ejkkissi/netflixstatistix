@@ -186,13 +186,13 @@ public class ProfileDao implements IProfileDao {
     public void setProfileWatchTimeForEpisode(Profile profile, Episode episode, int percentage) {
         //first check if there's data already
         String sql = "SELECT * FROM profile_episode\n"
-                +"WHERE profile_name = '" + profile.getName() + "' AND profile_account = '" + profile.getAccountEmail() + "'"
+                +"WHERE profile_name = '" + profile.getName() + "' AND profile_email = '" + profile.getAccountEmail() + "'"
                 +"AND episode = " + episode.getId();
         DBManager.getInstance().query(sql, rs -> {
             try {
                 if (!rs.next()) { // insert new if none
                     String sql2 = "INSERT INTO profile_episode (profile_name, profile_email, episode, watch_time) VALUES\n"
-                            +"('" + profile.getName() + "', '" + profile.getName() + "', " + episode.getId() + ", " + percentage + ")";
+                            +"('" + profile.getName() + "', '" + profile.getAccountEmail() + "', " + episode.getId() + ", " + percentage + ")";
                     DBManager.getInstance().query(sql2, null);
                 } else { //update if there is
                     String sql3 = "UPDATE profile_movie SET\n"
@@ -200,7 +200,7 @@ public class ProfileDao implements IProfileDao {
                             +"profile_email = '" + profile.getAccountEmail() + "', "
                             +"episode = " + episode.getId() + ", "
                             +"watch_time = " + percentage + "\n"
-                            +"WHERE profile_name = '" + profile.getName() + "' AND profile_account = '" + profile.getAccountEmail()
+                            +"WHERE profile_name = '" + profile.getName() + "' AND profile_email = '" + profile.getAccountEmail()
                             +"' AND episode = " + episode.getId();
                     DBManager.getInstance().query(sql3, null);
                 }

@@ -37,7 +37,7 @@ public class MovieFrame extends JFrame {
         watchedBy = new JPanel();
         watchedBy.setLayout(new GridLayout(0, 2));
 
-        watchedByLabel = new JLabel("Watched by:");
+        watchedByLabel = new JLabel("Bekeken door:");
         fullyWatchedBy = new JLabel();
 
         wbWrapper = new JScrollPane(watchedBy);
@@ -54,7 +54,7 @@ public class MovieFrame extends JFrame {
         this.setContentPane(content);
 
         SwingUtilities.invokeLater(this::generateWatchedBy);
-        SwingUtilities.invokeLater(() -> fullyWatchedBy.setText("Fully watched by: " + calcFullyWatched()));
+        SwingUtilities.invokeLater(() -> fullyWatchedBy.setText("Volledig bekeken door: " + calcFullyWatched() + " personen"));
     }
 
     private void generateWatchedBy() {

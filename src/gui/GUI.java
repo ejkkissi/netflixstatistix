@@ -1,6 +1,7 @@
 package gui;
 
 import managers.DaoManager;
+import model.Series;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,6 +45,11 @@ public class GUI {
         DaoManager.getInstance().getSeriesDao().getAllSeries().forEach(series -> {
             System.out.println("Rendering..." + series.getTitle());
             JButton button = new JButton();
+            button.addActionListener(a -> {
+                SeriesFrame sf = new SeriesFrame(series);
+                sf.setSize(800, 500);
+                sf.setVisible(true);
+            });
             button.setText(series.getTitle());
             programs.add(button);
         });
