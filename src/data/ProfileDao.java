@@ -31,7 +31,7 @@ public class ProfileDao implements IProfileDao {
 
     @Override
     public void createProfile(Profile profile) {
-        String sql = "INSERT INTO profile (name, account, email) VALUES ('" + profile.getName() + "', '" + profile.getAccountEmail() + "', " + profile.getAge() + ")";
+        String sql = "INSERT INTO profile (name, account, age) VALUES ('" + profile.getName() + "', '" + profile.getAccountEmail() + "', " + profile.getAge() + ")";
         DBManager.getInstance().query(sql, null);
     }
 

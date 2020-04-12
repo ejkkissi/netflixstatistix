@@ -6,8 +6,6 @@ import model.Account;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class AccountFrame extends JFrame {
     private JPanel content;
@@ -33,14 +31,16 @@ public class AccountFrame extends JFrame {
 
         sep1 = new JSeparator();
 
-        addProfile = new JButton("Add");
+        addProfile = new JButton("Nieuw Profiel");
         addProfile.addActionListener(actionEvent -> {
-            AddProfileFrame apf = new AddProfileFrame(account);
+            AddProfileFrame apf = new AddProfileFrame(this, account);
             apf.setSize(300, 300);
             apf.setVisible(true);
         });
 
         profiles = new JPanel();
+        profiles.setLayout(new GridLayout(0, 1));
+
         content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
@@ -56,7 +56,9 @@ public class AccountFrame extends JFrame {
         generateProfiles();
     }
 
-    private void generateProfiles() {
+    public void generateProfiles() {
+        profiles.removeAll();
+
         DaoManager.getInstance().getProfileDao().getProfilesOf(account).forEach(profile -> {
             JPanel panel = new JPanel();
             JLabel label = new JLabel(profile.getName());
@@ -80,6 +82,7 @@ public class AccountFrame extends JFrame {
             profiles.add(panel);
         });
 
-        this.repaint();
+        revalidate();
+        repaint();
     }
 }
