@@ -1,0 +1,322 @@
+2020-04-12 15:50:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'montes.nascetur@pellentesqueSeddictum.co.uk' (43)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('montes.nascetur@pellentesqueSeddictum.co.uk', 'Perry', '153-3918 Posuere Rd.', 'Pike Creek') [22001-200]
+2020-04-12 15:50:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'turpis.egestas.Aliquam@auctorveliteget.org' (42)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('turpis.egestas.Aliquam@auctorveliteget.org', 'Eliana', 'Ap #390-9037 Tempor Road', 'Macklin') [22001-200]
+2020-04-12 15:50:59 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ADDRESS VARCHAR(30)": "'P.O. Box 417, 1496 Suspendisse Rd.' (34)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('faucibus.Morbi.vehicula@pellentesque.ca', 'Anika', 'P.O. Box 417, 1496 Suspendisse Rd.', 'Svobodny') [22001-200]
+2020-04-12 15:50:59 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "CITY VARCHAR(20)": "'Santo Stefano del Sole' (22)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('arcu@aliquetdiamSed.net', 'Graham', 'P.O. Box 637, 4659 Nunc St.', 'Santo Stefano del Sole') [22001-200]
+2020-04-12 15:50:59 jdbc[39]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ADDRESS VARCHAR(30)": "'P.O. Box 578, 8967 Tellus Avenue' (32)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('Nullam.scelerisque.neque@interdum.ca', 'Reese', 'P.O. Box 578, 8967 Tellus Avenue', 'Kansas City') [22001-200]
+2020-04-12 15:50:59 jdbc[43]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ADDRESS VARCHAR(30)": "'P.O. Box 102, 8575 Morbi Avenue' (31)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('nibh@turpisegestasAliquam.co.uk', 'Emerson', 'P.O. Box 102, 8575 Morbi Avenue', 'Lagundo/Algund') [22001-200]
+2020-04-12 15:51:00 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:51:00 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:51:00 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:51:00 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:51:00 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:51:00 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:52:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'montes.nascetur@pellentesqueSeddictum.co.uk' (43)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('montes.nascetur@pellentesqueSeddictum.co.uk', 'Perry', '153-3918 Posuere Rd.', 'Pike Creek') [22001-200]
+2020-04-12 15:52:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'turpis.egestas.Aliquam@auctorveliteget.org' (42)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('turpis.egestas.Aliquam@auctorveliteget.org', 'Eliana', 'Ap #390-9037 Tempor Road', 'Macklin') [22001-200]
+2020-04-12 15:52:08 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:52:08 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:42)
+	at gui.GUI.show(GUI.java:37)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:55:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'montes.nascetur@pellentesqueSeddictum.co.uk' (43)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('montes.nascetur@pellentesqueSeddictum.co.uk', 'Perry', '153-3918 Posuere Rd.', 'Pike Creek') [22001-200]
+2020-04-12 15:55:54 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'turpis.egestas.Aliquam@auctorveliteget.org' (42)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('turpis.egestas.Aliquam@auctorveliteget.org', 'Eliana', 'Ap #390-9037 Tempor Road', 'Macklin') [22001-200]
+2020-04-12 15:55:55 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:43)
+	at gui.GUI.show(GUI.java:38)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:55:55 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:43)
+	at gui.GUI.show(GUI.java:38)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:56:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'montes.nascetur@pellentesqueSeddictum.co.uk' (43)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('montes.nascetur@pellentesqueSeddictum.co.uk', 'Perry', '153-3918 Posuere Rd.', 'Pike Creek') [22001-200]
+2020-04-12 15:56:21 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'turpis.egestas.Aliquam@auctorveliteget.org' (42)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('turpis.egestas.Aliquam@auctorveliteget.org', 'Eliana', 'Ap #390-9037 Tempor Road', 'Macklin') [22001-200]
+2020-04-12 15:56:22 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:43)
+	at gui.GUI.show(GUI.java:38)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:56:22 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:43)
+	at gui.GUI.show(GUI.java:38)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:56:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'montes.nascetur@pellentesqueSeddictum.co.uk' (43)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('montes.nascetur@pellentesqueSeddictum.co.uk', 'Perry', '153-3918 Posuere Rd.', 'Pike Creek') [22001-200]
+2020-04-12 15:56:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMAIL VARCHAR(40)": "'turpis.egestas.Aliquam@auctorveliteget.org' (42)"; SQL statement:
+INSERT INTO account (email, name, address, city) VALUES('turpis.egestas.Aliquam@auctorveliteget.org', 'Eliana', 'Ap #390-9037 Tempor Road', 'Macklin') [22001-200]
+2020-04-12 15:56:40 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:43)
+	at gui.GUI.show(GUI.java:38)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more
+2020-04-12 15:56:40 jdbc[45]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:251)
+	at managers.DBManager.query(DBManager.java:24)
+	at data.SeriesDao.getAllSeries(SeriesDao.java:16)
+	at gui.GUI.generatePrograms(GUI.java:43)
+	at gui.GUI.show(GUI.java:38)
+	at Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 14 more

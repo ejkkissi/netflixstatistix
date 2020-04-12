@@ -38,9 +38,9 @@ CREATE TABLE episode (
 
 CREATE TABLE account (
     email VARCHAR(40) PRIMARY KEY NOT NULL,
-    name VARCHAR(20) NOT NULL,
-    address VARCHAR(30) NOT NULL,
-    city VARCHAR(20) NOT NULL
+    name VARCHAR(40) NOT NULL,
+    address VARCHAR(40) NOT NULL,
+    city VARCHAR(40) NOT NULL
 );
 
 CREATE TABLE profile (
