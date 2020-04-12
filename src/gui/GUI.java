@@ -4,8 +4,9 @@ import managers.DaoManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class GUI {
     JFrame frame;
@@ -61,6 +62,11 @@ public class GUI {
         DaoManager.getInstance().getAccountDao().getAllAccounts().forEach(account -> {
             System.out.println("Rendering..." + account.getEmail());
             JButton button = new JButton();
+            button.addActionListener(actionEvent -> {
+                AccountFrame accFrame = new AccountFrame(account.getEmail());
+                accFrame.setSize(800, 500);
+                accFrame.setVisible(true);
+            });
             button.setText(account.getEmail());
             accounts.add(button);
         });
