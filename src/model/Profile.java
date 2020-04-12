@@ -5,6 +5,16 @@ public class Profile {
     private String accountEmail;
     private int age;
 
+    public Profile() {
+
+    }
+
+    public Profile(String name, String accountEmail, int age) {
+        this.name = name;
+        this.accountEmail = accountEmail;
+        this.age = age;
+    }
+
     public String getName() {
         return name;
     }

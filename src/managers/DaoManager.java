@@ -10,9 +10,17 @@ public class DaoManager {
     private IProfileDao profileDao;
     private ISeriesDao seriesDao;
 
-    public DaoManager getInstance() {
+    public DaoManager(IAccountDao accountDao, IEpisodeDao episodeDao, IMovieDao movieDao, IProfileDao profileDao, ISeriesDao seriesDao) {
+        this.accountDao = accountDao;
+        this.episodeDao = episodeDao;
+        this.movieDao = movieDao;
+        this.profileDao = profileDao;
+        this.seriesDao = seriesDao;
+    }
+
+    public static DaoManager getInstance() {
         if (instance == null) {
-            instance = new DaoManager();
+            instance = new DaoManager(new AccountDao(), new EpisodeDao(), new MovieDao(), new ProfileDao(), new SeriesDao());
         }
         return instance;
     }
