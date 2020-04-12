@@ -51,6 +51,11 @@ public class GUI {
         DaoManager.getInstance().getMovieDao().getAllMovies().forEach(movie -> {
             System.out.println("Rendering..." + movie.getTitle());
             JButton button = new JButton();
+            button.addActionListener((a) -> {
+                MovieFrame mf = new MovieFrame(movie);
+                mf.setSize(800, 500);
+                mf.setVisible(true);
+            });
             button.setText(movie.getTitle());
             programs.add(button);
         });

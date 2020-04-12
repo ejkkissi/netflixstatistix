@@ -122,7 +122,7 @@ public class ProfileDao implements IProfileDao {
     public int getProfileWatchTimeForMovie(Profile profile, Movie movie) {
         AtomicInteger x = new AtomicInteger();
         String sql = "SELECT watch_time FROM profile_movie\n"
-                    +"WHERE profile_name = '" + profile.getName() + "' AND profile_account = '" + profile.getAccountEmail() + "'"
+                    +"WHERE profile_name = '" + profile.getName() + "' AND profile_email = '" + profile.getAccountEmail() + "'"
                     +"AND movie = " + movie.getId();
         DBManager.getInstance().query(sql, rs -> {
            try {
@@ -140,7 +140,7 @@ public class ProfileDao implements IProfileDao {
     public int getProfileWatchTimeForEpisode(Profile profile, Episode episode) {
         AtomicInteger x = new AtomicInteger();
         String sql = "SELECT watch_time FROM profile_episode\n"
-                    +"WHERE profile_name = '" + profile.getName() + "' AND profile_account = '" + profile.getAccountEmail() +"'"
+                    +"WHERE profile_name = '" + profile.getName() + "' AND profile_email = '" + profile.getAccountEmail() +"'"
                     +"AND episode = '" + episode.getId() + "'";
         DBManager.getInstance().query(sql, rs -> {
             try {
@@ -158,13 +158,13 @@ public class ProfileDao implements IProfileDao {
     public void setProfileWatchTimeForMovie(Profile profile, Movie movie, int percentage) {
         //first check if there's data already
         String sql = "SELECT * FROM profile_movie\n"
-                    +"WHERE profile_name = '" + profile.getName() + "' AND profile_account = '" + profile.getAccountEmail() + "'"
+                    +"WHERE profile_name = '" + profile.getName() + "' AND profile_email = '" + profile.getAccountEmail() + "'"
                     +"AND movie = " + movie.getId();
         DBManager.getInstance().query(sql, rs -> {
            try {
                if (!rs.next()) { // insert new if none
                    String sql2 = "INSERT INTO profile_movie (profile_name, profile_email, movie, watch_time) VALUES\n"
-                        +"('" + profile.getName() + "', '" + profile.getName() + "', " + movie.getId() + ", '" + percentage + "')";
+                        +"('" + profile.getName() + "', '" + profile.getAccountEmail() + "', " + movie.getId() + ", '" + percentage + "')";
                    DBManager.getInstance().query(sql2, null);
                } else { //update if there is
                    String sql3 = "UPDATE profile_movie SET\n"
@@ -172,7 +172,7 @@ public class ProfileDao implements IProfileDao {
                         +"profile_email = '" + profile.getAccountEmail() + "', "
                         +"movie = " + movie.getId() + ", "
                         +"watch_time = " + percentage + "\n"
-                           +"WHERE profile_name = '" + profile.getName() + "' AND profile_account = '" + profile.getAccountEmail() + "'"
+                           +"WHERE profile_name = '" + profile.getName() + "' AND profile_email = '" + profile.getAccountEmail() + "'"
                            +"AND movie = " + movie.getId();
                    DBManager.getInstance().query(sql3, null);
                }

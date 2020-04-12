@@ -52,7 +52,6 @@ public class DataUtil {
             int numprofiles = rand.nextInt((5)) + 1;
             for (int i = 0; i < numprofiles; i++) {
                 Profile profile = new Profile();
-                rand = new Random();
                 profile.setName(names[rand.nextInt((names.length))]);
                 profile.setAccountEmail(account.getEmail());
                 profile.setAge(rand.nextInt((80 - 4) + 1) + 4);
@@ -64,6 +63,18 @@ public class DataUtil {
     }
 
     public static void generateViewerData() {
+        DaoManager daos = DaoManager.getInstance();
+        Random rand = new Random();
 
+        daos.getMovieDao().getAllMovies().forEach(movie -> {
+            daos.getProfileDao().getAllProfiles().forEach(profile -> {
+                int watched = rand.nextInt(2); // 50% chance they watched the movie
+                if (watched == 1) {
+                    int percentage = rand.nextInt(100) + 1;
+                    daos.getProfileDao().setProfileWatchTimeForMovie(profile, movie, percentage);
+                    System.out.println("Set percentage " + profile.getName() + " : " + profile.getAccountEmail() + " for " + movie.getTitle() + " to " + percentage);
+                }
+            });
+        });
     }
 }
