@@ -5,6 +5,7 @@ import managers.DaoManager;
 import model.Account;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,17 +35,21 @@ public class AccountFrame extends JFrame {
 
         addProfile = new JButton("Add");
         addProfile.addActionListener(actionEvent -> {
-            //TODO create add profile frame
+            AddProfileFrame apf = new AddProfileFrame(account);
+            apf.setSize(300, 300);
+            apf.setVisible(true);
         });
 
         profiles = new JPanel();
         content = new JPanel();
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
         content.add(this.email);
         content.add(name);
         content.add(address);
         content.add(city);
         content.add(sep1);
+        content.add(addProfile);
         content.add(profiles);
 
         this.setContentPane(content);
