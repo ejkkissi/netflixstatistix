@@ -54,6 +54,7 @@ public class GUI {
             button.addActionListener((a) -> {
                 MovieFrame mf = new MovieFrame(movie);
                 mf.setSize(800, 500);
+                mf.setTitle(movie.getTitle());
                 mf.setVisible(true);
             });
             button.setText(movie.getTitle());
