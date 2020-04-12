@@ -3,6 +3,7 @@ package gui;
 import managers.DaoManager;
 import model.Account;
 import model.Profile;
+import util.MiscUtil;
 
 import javax.swing.*;
 import java.util.stream.Collectors;
@@ -64,7 +65,7 @@ public class AddProfileFrame extends JFrame {
             }
 
             //checks for age
-            if (!isInteger(agetxt)) {
+            if (!MiscUtil.isInteger(agetxt)) {
                 new Popup("Leeftijd moet een getal zijn");
                 return;
             }
@@ -93,14 +94,5 @@ public class AddProfileFrame extends JFrame {
         content.add(btnCancel);
 
         this.setContentPane(content);
-    }
-
-    private boolean isInteger(String string) {
-        try {
-            Integer.valueOf(string);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
     }
 }

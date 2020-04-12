@@ -72,7 +72,9 @@ public class AccountFrame extends JFrame {
             });
 
             btnEdit.addActionListener(a -> {
-                //TODO create profile edit frame
+                EditProfileFrame epf = new EditProfileFrame(profile);
+                epf.setSize(300, 300);
+                epf.setVisible(true);
             });
 
             panel.add(label);
