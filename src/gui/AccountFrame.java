@@ -6,6 +6,7 @@ import model.Account;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class AccountFrame extends JFrame {
     private JPanel content;
@@ -19,6 +20,7 @@ public class AccountFrame extends JFrame {
     private JScrollPane watchedWrapper;
     private JPanel watched;
     private Account account;
+    private JLabel watchedLabel;
 
     public AccountFrame(String email) {
         IAccountDao accountdao = DaoManager.getInstance().getAccountDao();
@@ -47,7 +49,10 @@ public class AccountFrame extends JFrame {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
         watched = new JPanel();
+        watched.setLayout(new GridLayout(0, 2));
         watchedWrapper = new JScrollPane(watched);
+        watchedLabel = new JLabel("Bekeken films:");
+
 
         content.add(this.email);
         content.add(name);
@@ -56,9 +61,12 @@ public class AccountFrame extends JFrame {
         content.add(sep1);
         content.add(addProfile);
         content.add(profiles);
+        content.add(watchedLabel);
+        content.add(watched);
 
         this.setContentPane(content);
-        generateProfiles();
+        SwingUtilities.invokeLater( this::generateProfiles);
+        SwingUtilities.invokeLater(this::generateWatched);
     }
 
     public void generateProfiles() {
@@ -67,7 +75,7 @@ public class AccountFrame extends JFrame {
         DaoManager.getInstance().getProfileDao().getProfilesOf(account).forEach(profile -> {
             JPanel panel = new JPanel();
             JLabel label = new JLabel(profile.getName());
-            panel.addMouseListener(null); //TODO to profile page
+            panel.addMouseListener(null); //TODO to profile page ripperoni
             JButton btnDelete = new JButton("Delete");
             JButton btnEdit = new JButton("Edit");
 
@@ -87,6 +95,37 @@ public class AccountFrame extends JFrame {
             panel.add(btnDelete);
 
             profiles.add(panel);
+        });
+
+        revalidate();
+        repaint();
+    }
+
+    private void generateWatched() {
+        watched.removeAll();
+
+        DaoManager daos = DaoManager.getInstance();
+        daos.getProfileDao().getProfilesOf(account).forEach( p -> {
+            System.out.println("Iterating over " + p.getName());
+            daos.getMovieDao().getMoviesWatchedBy(p).forEach( m -> {
+                System.out.println("Iterating over " + m.getTitle());
+                JButton btn = new JButton(m.getTitle());
+                btn.addActionListener(a -> {
+                    MovieFrame mf = new MovieFrame(m);
+                    mf.setSize(800, 500);
+                    mf.setTitle(m.getTitle());
+                    mf.setVisible(true);
+                });
+
+                boolean check = false;
+                for (int i = 0; i < watched.getComponents().length; i++) {
+                    JButton button = (JButton) watched.getComponent(i);
+                    if (button.getText() == btn.getText()) check = true;
+                }
+                if (!check) {
+                    watched.add(btn);
+                }
+            });
         });
 
         revalidate();

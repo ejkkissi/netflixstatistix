@@ -45,7 +45,7 @@ public class SeriesFrame extends JFrame {
         content.add(epWrapper);
 
         this.setContentPane(content);
-        generateEpisodes();
+        SwingUtilities.invokeLater(this::generateEpisodes);
     }
 
     private void generateEpisodes() {
@@ -62,7 +62,7 @@ public class SeriesFrame extends JFrame {
             daos.getProfileDao().getProfilesWhoWatched(e).stream()
                     .filter(p -> daos.getProfileDao().getProfileWatchTimeForEpisode(p, e) > 0)
                     .forEach(p -> {
-
+                        System.out.println("Adding data for calc of " + p.getName());
                         total.addAndGet(daos.getProfileDao().getProfileWatchTimeForEpisode(p, e));
                         counter.getAndIncrement();
                     });

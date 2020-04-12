@@ -76,7 +76,7 @@ public class GUI {
             JButton button = new JButton();
             button.addActionListener(actionEvent -> {
                 AccountFrame accFrame = new AccountFrame(account.getEmail());
-                accFrame.setSize(800, 500);
+                accFrame.setSize(800, 700);
                 accFrame.setVisible(true);
             });
             button.setText(account.getEmail());

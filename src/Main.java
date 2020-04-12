@@ -18,6 +18,7 @@ public class Main {
             panel.add(new JLabel("Database genereert wat gegevens..."));
             panel.add(new JLabel("Dit kan ongeveer 5 minuten duren..."));
             panel.add(new JLabel("Ik weet niet waarom het zo lang duurt ¯\\_(ツ)_/¯"));
+            temp.setSize(500, 300);
             temp.setVisible(true);
             DBManager.getInstance().query(SQLUtil.getQuery("default"), null);
             DataUtil.generateAccountData();
