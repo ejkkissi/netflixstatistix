@@ -10,6 +10,7 @@ public class Main {
         //generate data
         DBManager.getInstance().query(SQLUtil.getQuery("default"), null);
         DataUtil.generateAccountData();
+        DataUtil.generateProfiles();
         new GUI().show();
     }
 }

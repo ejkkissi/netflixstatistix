@@ -37,7 +37,7 @@ CREATE TABLE episode (
 );
 
 CREATE TABLE account (
-    email VARCHAR(40) PRIMARY KEY NOT NULL,
+    email VARCHAR(50) PRIMARY KEY NOT NULL,
     name VARCHAR(40) NOT NULL,
     address VARCHAR(40) NOT NULL,
     city VARCHAR(40) NOT NULL
@@ -45,19 +45,19 @@ CREATE TABLE account (
 
 CREATE TABLE profile (
     name VARCHAR(20) NOT NULL,
-    account VARCHAR(40) NOT NULL,
+    account VARCHAR(50) NOT NULL,
     age SMALLINT NOT NULL
 );
 
 CREATE TABLE profile_movie (
-    profile_email VARCHAR(40) NOT NULL,
+    profile_email VARCHAR(50) NOT NULL,
     profile_name VARCHAR(20) NOT NULL,
     movie INT NOT NULL,
     watch_time SMALLINT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE profile_episode (
-    profile_email VARCHAR(40) NOT NULL,
+    profile_email VARCHAR(50) NOT NULL,
     profile_name VARCHAR(20) NOT NULL,
     episode INT NOT NULL,
     watch_time SMALLINT NOT NULL DEFAULT 0
@@ -71,15 +71,14 @@ ALTER TABLE profile ADD CONSTRAINT fk_profile_account FOREIGN KEY (account) REFE
 
 ALTER TABLE profile_movie ADD PRIMARY KEY (profile_email, profile_name, movie);
 ALTER TABLE profile_movie ADD CONSTRAINT fk_pm_movie FOREIGN KEY (movie) REFERENCES movie;
-ALTER TABLE profile_movie ADD CONSTRAINT fk_pm_email FOREIGN KEY (profile_email) REFERENCES profile(account) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE profile_movie ADD CONSTRAINT fk_pm_name FOREIGN KEY (profile_name) REFERENCES profile(name) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE profile_movie ADD CONSTRAINT fk_pm_email FOREIGN KEY (profile_email, profile_name) REFERENCES profile ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE profile_episode ADD PRIMARY KEY (profile_email, profile_name, episode);
 ALTER TABLE profile_episode ADD CONSTRAINT fk_pe_episode FOREIGN KEY (episode) REFERENCES episode;
-ALTER TABLE profile_episode ADD CONSTRAINT fk_pe_email FOREIGN KEY (profile_email) REFERENCES profile(account) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE profile_episode ADD CONSTRAINT fk_pe_name FOREIGN KEY (profile_name) REFERENCES profile(name) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE profile_episode ADD CONSTRAINT fk_pe_email FOREIGN KEY (profile_email, profile_name) REFERENCES profile ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- Unique constraints
+ALTER TABLE profile ADD CONSTRAINT unique_profile UNIQUE (account, name);
 ALTER TABLE profile_movie ADD CONSTRAINT unique_pm UNIQUE (profile_email, profile_name, movie);
 ALTER TABLE profile_episode ADD CONSTRAINT unique_pe UNIQUE (profile_email, profile_name, episode);
 
